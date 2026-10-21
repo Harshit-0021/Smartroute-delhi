@@ -1,6 +1,6 @@
 import streamlit as st
 import folium
-from streamlit_folium import st_folium
+from streamlit_folium import folium_static
 
 # Import services
 from services.tomtom_service import geocode_tomtom, route_tomtom
@@ -53,10 +53,7 @@ with col_left:
 # ---------- RIGHT PANEL ----------
 with col_right:
     st.subheader("🗺️ Map View")
-    if st.session_state.map:
-        st_folium(st.session_state.map, width=700, height=700)
-    else:
-        st.info("Map will appear here once you calculate a route.")
+    map_slot = st.empty()
 
 # ---------------------------- ACTION (on button click) ----------------------------
 if go:
@@ -108,3 +105,14 @@ Give a short travel advisory with:
 
     except Exception as e:
         st.error(f"⚠️ Error: {e}")
+
+
+with map_slot.container():
+    if st.session_state.map is not None:
+        folium_static(
+            st.session_state.map,
+            width=700,
+            height=700
+        )
+    else:
+        st.info("Map will appear here once you calculate a route.")
