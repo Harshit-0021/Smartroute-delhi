@@ -1,4 +1,4 @@
-# Delhi Traffic Prediction & OpenStreetMap
+# Delhi Traffic Prediction & OpenStreetMap | Live app: [SmartRoute](https://smartroute-delhi.streamlit.app/)
 
 A machine learning-powered system to predict travel time. It visualizes live congestion, stop-to-stop delay, and optimal routes using interactive maps and charts.
 
